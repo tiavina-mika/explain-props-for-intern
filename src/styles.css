@@ -2,14 +2,27 @@
   font-family: sans-serif;
   text-align: center;
 }
+
 h3, h1 {
   margin: 0;
 }
+
 .root {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 10px;
+  text-align: left;
+  background-color: #fff;
+  margin-bottom: 10px;
 }
 .center {
   align-items: center;
+  text-align: center;
+}
+.description {
+  margin-top: 5px;
+}
+.custom {
+  background: red;
 }

@@ -8,17 +8,19 @@ type BlockChildrenProps = {
   isCenter?: boolean;
   title: string;
   description: string;
+  className?: string;
 };
-const BlockChildren = ({ 
+const BlockChildren = ({
+  className,
   children, 
   isCenter, 
   title, 
   description 
 }: BlockChildrenProps) => {
   return (
-    <div className={clsx('root', isCenter && 'center')}>
+    <div className={clsx('root', isCenter && 'center', className)}>
       <h3>{title}</h3>
-      <div>{description}</div>
+      <div className="description">{description}</div>
       {children}
     </div>
   )
@@ -37,36 +39,46 @@ const BlockComponent = ({ text }: BlockComponentProps) => {
 
 
 const description = "We’ve helped everyone from small startups to Fortune 100 companies build websites that raise perceptions, create trust and drive growth. From architecture to development, our team proactively uncovers the best way to share your brand and products with the world. In fact, Together is currently London’s top web design agency on .";
-export default function App() {
+const App = () => {
   return (
     <div className="App">
-        {/* <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2> */}
+      {/* --------------- Centered Block --------------- */}
         <BlockChildren 
           isCenter
-          title="Engaging websites."
+          title="Centered Block."
           description={description}
         >
           <a href="/">Hello There I'm children</a>
         </BlockChildren>
 
-
+      {/* --------------- Left align Block --------------- */}
         <BlockChildren 
-          title="Engaging websites 2."
+          title="Left align Block."
           description={description}
         >
         </BlockChildren>
 
-
+      {/* --------------- Block with footer. --------------- */}
         <BlockChildren 
-          title="Engaging websites 2."
+          title="Block with footer."
           description={description}
         >
           <h1>Hello Footer</h1>
         </BlockChildren>
 
+      {/* --------------- Custom style. --------------- */}
+      <BlockChildren 
+          title="Block with footer."
+          description={description}
+          className="custom"
+        >
+          <h1>Hello Footer</h1>
+        </BlockChildren>
 
+      {/* --------------- Normal props. --------------- */}
         <BlockComponent text="Hello There I'm a text" />
       </div>
   );
 }
+
+export default App;
